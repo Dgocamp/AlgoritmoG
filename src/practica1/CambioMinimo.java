@@ -44,7 +44,7 @@ public class CambioMinimo {
 /**
 	* The total number of times we'll let the population evolve.
 	*/
-	private static final int MAX_EVOLUCIONES_PERMITIDAS = 2200;
+	private static final int MAX_EVOLUCIONES_PERMITIDAS =4400;
 
 	/**
 	* Calcula utilizando algoritmos geneticos la solución al problema y la
@@ -77,21 +77,25 @@ public class CambioMinimo {
 		// Se debe crear un cromosoma de ejemplo y cargarlo en la configuracion
 		// Cada gen tendra un valor maximo y minimo que debe setearse.
 		// --------------------------------------------------------------
-		Gene[] sampleGenes = new Gene[8];
-		sampleGenes[0] = new IntegerGene(conf, 0, Math.round(CambioMinimoFuncionAptitud.MAX_MONTO/200)); // Moneda 2 euros
-                sampleGenes[1] = new IntegerGene(conf, 0, Math.round(CambioMinimoFuncionAptitud.MAX_MONTO/100)); // Moneda 1 euro
-		sampleGenes[2] = new IntegerGene(conf, 0, 10); // Moneda 50 centimos
-		sampleGenes[3] = new IntegerGene(conf, 0, 10); // Moneda 20 centimos
-		sampleGenes[4] = new IntegerGene(conf, 0, 10); // Moneda 10 centimos
-		sampleGenes[5] = new IntegerGene(conf, 0, 10); // Moneda 5 centimos
-                sampleGenes[6] = new IntegerGene(conf, 0, 10); // Moneda 2 centimos
-		sampleGenes[7] = new IntegerGene(conf, 0, 10); // Moneda 1 centimo
+		Gene[] sampleGenes = new Gene[11];
+                sampleGenes[0] = new IntegerGene(conf, 0, Math.round(CambioMinimoFuncionAptitud.MAX_MONTO/20000));
+                sampleGenes[1] = new IntegerGene(conf, 0, Math.round(CambioMinimoFuncionAptitud.MAX_MONTO/10000));
+                sampleGenes[2] = new IntegerGene(conf, 0, Math.round(CambioMinimoFuncionAptitud.MAX_MONTO/5000));
+                sampleGenes[3] = new IntegerGene(conf, 0, Math.round(CambioMinimoFuncionAptitud.MAX_MONTO/2000));
+                sampleGenes[4] = new IntegerGene(conf, 0, Math.round(CambioMinimoFuncionAptitud.MAX_MONTO/1000));
+		sampleGenes[5] = new IntegerGene(conf, 0, 10); 
+                sampleGenes[6] = new IntegerGene(conf, 0, 10); 
+		sampleGenes[7] = new IntegerGene(conf, 0, 10); 
+		sampleGenes[8] = new IntegerGene(conf, 0, 10); 
+		sampleGenes[9] = new IntegerGene(conf, 0, 10); 
+		sampleGenes[10] = new IntegerGene(conf, 0, 10); 
+                
 		IChromosome sampleChromosome = new Chromosome(conf, sampleGenes);
 		conf.setSampleChromosome(sampleChromosome);
 		// Por ultimo se debe indicar el tamaño de la poblacion en la
 		// configuracion
 		// ------------------------------------------------------------
-		conf.setPopulationSize(200);
+		conf.setPopulationSize(400);
 		Genotype Poblacion;
 		// El framework permite obtener la poblacion inicial de archivos xml
 		// pero para este caso particular resulta mejor crear una poblacion
@@ -113,15 +117,20 @@ public class CambioMinimo {
 		IChromosome cromosomaMasApto = Poblacion.getFittestChromosome();
 		System.out.println("El cromosoma mas apto encontrado tiene un valor de aptitud de: " + cromosomaMasApto.getFitnessValue());
 		System.out.println("Y esta formado por la siguiente distribucion de monedas: ");
-		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 0) + " Moneda 2 euros");
-                System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 1) + " Moneda 1 euro");
-		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 2) + " Moneda 50 centimos");
-		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 3) + " Moneda 20 centimos");
-		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 4) + " Moneda 10 centimos");
-		System.out.println("\t" + CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 5) + " Moneda 5 centimos");
-                System.out.println("\t" + CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 6) + " Moneda 2 centimos");
-		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 7) + " Moneda 1 centimo");
-		System.out.println("Para un total de "+ CambioMinimoFuncionAptitud.montoCambioMoneda(cromosomaMasApto) + " centimos en " + CambioMinimoFuncionAptitud.getNumeroTotalMonedas(cromosomaMasApto) + " monedas.");
+                System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 0) + " Billete 20000");
+                System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 1) + " Billete 10000");
+                System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 2) + " Billete 5000");
+                System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 3) + " Billete 2000");
+                System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 4) + " Billete 1000");
+		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 5) + " Moneda 500");
+                System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 6) + " Moneda 100");
+		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 7) + " Moneda 50");
+		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 8) + " Moneda 10");
+		System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 9) + " Moneda 5");
+		System.out.println("\t" + CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 10) + " Moneda 1");
+                //System.out.println("\t" + CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 6) + " Moneda 2 centimos");
+		//System.out.println("\t"	+ CambioMinimoFuncionAptitud.getNumeroDeComendasDeGen(cromosomaMasApto, 7) + " Moneda 1 centimo");
+		//System.out.println("Para un total de "+ CambioMinimoFuncionAptitud.montoCambioMoneda(cromosomaMasApto) + " centimos en " + CambioMinimoFuncionAptitud.getNumeroTotalMonedas(cromosomaMasApto) + " monedas.");
 	}
 
 	/**
@@ -138,11 +147,11 @@ public class CambioMinimo {
 	*/
 
 	public static void main(String[] args) throws Exception {
-			int amount = 323;
+			int amount = 95000;
 			try {
 				//amount = Integer.parseInt(args[0]);
 			} catch (NumberFormatException e) {
-				System.out.println("El (Monto de dinero) debe ser un numero entero valido");
+				System.out.println("El (Monto de dinero) debe ser un numero entero válido");
 				System.exit(1);
 			}
 			if (amount < 1 || amount >= CambioMinimoFuncionAptitud.MAX_MONTO) {

@@ -23,7 +23,7 @@ import org.jgap.*;
 public class CambioMinimoFuncionAptitud extends FitnessFunction{
     private final int montoObjetivo;
 	// Maximo monto posible 1000 Centimos = 10 Euros
-	public static final int MAX_MONTO = 1000;
+	public static final int MAX_MONTO = 100001;
 	// Maxima cantidad de monedas posibles. Es igual al Monto maximo en
 	// centimos, ya que si se utilizan monedas de un centimo se llegaria al
 	// monton con la mayor cantidad posible de monedas
@@ -98,16 +98,21 @@ public class CambioMinimoFuncionAptitud extends FitnessFunction{
 	*/
 
 	public static int montoCambioMoneda(IChromosome cromosoma) {
-		int Moneda2Euro = getNumeroDeComendasDeGen(cromosoma, 0);
-                int Moneda1Euro = getNumeroDeComendasDeGen(cromosoma, 1);
-		int Moneda50Centimos = getNumeroDeComendasDeGen(cromosoma, 2);
-		int Moneda20Centimos = getNumeroDeComendasDeGen(cromosoma, 3);
-		int Moneda10Centimos = getNumeroDeComendasDeGen(cromosoma, 4);
-		int Moneda5Centimos = getNumeroDeComendasDeGen(cromosoma, 5);
-                int Moneda2Centimos = getNumeroDeComendasDeGen(cromosoma, 6);
-		int Moneda1Centimo = getNumeroDeComendasDeGen(cromosoma, 7);
+                int Billete20000 = getNumeroDeComendasDeGen(cromosoma, 0);
+                int Billete10000 = getNumeroDeComendasDeGen(cromosoma, 1);
+                int Billete5000 = getNumeroDeComendasDeGen(cromosoma, 2);
+                int Billete2000 = getNumeroDeComendasDeGen(cromosoma, 3);
+                int Billete1000 = getNumeroDeComendasDeGen(cromosoma, 4);
+		int Moneda500 = getNumeroDeComendasDeGen(cromosoma, 5);
+                int Moneda100 = getNumeroDeComendasDeGen(cromosoma, 6);
+		int Moneda50 = getNumeroDeComendasDeGen(cromosoma, 7);
+		int Moneda10 = getNumeroDeComendasDeGen(cromosoma, 8);
+		int Moneda5 = getNumeroDeComendasDeGen(cromosoma, 9);
+		int Moneda1 = getNumeroDeComendasDeGen(cromosoma, 10);
+                //int Moneda2Centimos = getNumeroDeComendasDeGen(cromosoma, 6);
+		//int Moneda1Centimo = getNumeroDeComendasDeGen(cromosoma, 7);
 
-		return (Moneda2Euro * 200) + (Moneda1Euro * 100) + (Moneda50Centimos * 50) + (Moneda20Centimos * 20) + (Moneda10Centimos * 10) + (Moneda5Centimos * 5) + (Moneda2Centimos * 2) + Moneda1Centimo;
+		return (Billete20000 * 20000)+(Billete10000 * 10000)+(Billete5000 * 5000)+(Billete2000 * 2000)+(Billete1000 * 1000) +(Moneda500 * 500) + (Moneda100 * 100) + (Moneda50 * 50) + (Moneda10 * 10) + (Moneda5 * 5) + Moneda1; //+ (Moneda2Centimos * 2) + Moneda1Centimo;
 	}
 
 	/**
